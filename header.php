@@ -16,7 +16,5 @@
          <form class="" action="logout.inc.php" method="post">
            <input type="submit" name="" value="logout">
          </form>
+       </div>
      </header>
-
-
-     </div>

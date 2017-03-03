@@ -6,9 +6,9 @@
   $pwd = $_POST['pwd'];
 
   $sql = "SELECT * FROM users WHERE uid='$uid' AND pwd='$pwd'";
-  $result = mysqli_query($conn, $sql);
+  $result_login = mysqli_query($conn, $sql);
 
-  if(!$row = mysqli_fetch_assoc($result)){
+  if(!$row = mysqli_fetch_assoc($result_login)){
     echo "your uid or password were incorect";
   }
   else{
