@@ -17,7 +17,7 @@
    <input type="text" name="pret_ofertat" placeholder="Pret ofertat">
    <input type="text" name="reducere_acordata" placeholder="Reducere acordata">
    <?php
-      ..lista firme
+      //lista firme
     ?>
    <input type="submit" value="Insert">
  </form>
