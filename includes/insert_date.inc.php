@@ -1,5 +1,5 @@
 <?php
-  include 'dbh.php';
+  include '../dbh.php';
   session_start();
 
   //variabile de introdus
@@ -29,4 +29,3 @@
   //variabile calculate
 
     $pret_ron = $pret_ofertat*(1+$reducere_acordata);
-    

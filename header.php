@@ -8,7 +8,7 @@
    <head>
      <meta charset="utf-8">
      <title>home</title>
-     <link rel="stylesheet" href="homestyle.css" type="text/css">
+     <link rel="stylesheet" href="css\homestyle.css" type="text/css">
    </head>
    <body>
      <header>
@@ -16,7 +16,7 @@
          <?php
            if(isset($_SESSION['uid'])){
              echo "You are logged in as " . $_SESSION['uid'];
-             echo "<form class='' action='logout.inc.php' method='post'>
+             echo "<form class='' action='includes\logout.inc.php' method='post'>
                <input type='submit' name='' value='logout'>
              </form>";
            }

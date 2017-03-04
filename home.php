@@ -8,7 +8,7 @@
         </form>
       </div>";
       echo "<div class='inserare date'>
-        <form action='insert_date.php'>
+        <form action='includes\insert_date.inc.php'>
           <input type='submit' value='Inserare date'>
         </form>
       </div>";

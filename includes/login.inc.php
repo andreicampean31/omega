@@ -1,5 +1,5 @@
 <?php
-  include 'dbh.php';
+  include '../dbh.php';
   session_start();
 
   $uid = $_POST['uid'];
@@ -15,4 +15,4 @@
     $_SESSION['uid'] = $row['uid'];
   }
 
-  header("Location: index.php");
+  header("Location: ../index.php");
