@@ -1,29 +1,37 @@
 <?php
   include 'header.php';
- ?>
 
- <div class="facturare">
-   <form action='facturare.php'>
-     <input type='submit' value='Facturare'>
-   </form>
- </div>
-
- <div class="inserare date">
-   <form action='insert_date.php'>
-     <input type='submit' value='Inserare date'>
-   </form>
- </div>
-
- <div class="inserare firme">
-   <form action='insert_firme.php'>
-     <input type='submit' value='Inserare firme'>
-   </form>
- </div>
-
- <div class="inserare delegati">
-   <form action='insert_delegati.php'>
-     <input type='submit' value='Inserare delegati'>
-   </form>
- </div>
+    if(isset( $_SESSION['uid'])){
+      echo "<div class='facturare'>
+        <form action='facturare.php'>
+          <input type='submit' value='Facturare'>
+        </form>
+      </div>";
+      echo "<div class='inserare date'>
+        <form action='insert_date.php'>
+          <input type='submit' value='Inserare date'>
+        </form>
+      </div>";
+      echo "<div class='inserare firme'>
+        <form action='insert_firme.php'>
+          <input type='submit' value='Inserare firme'>
+        </form>
+      </div>";
+      echo "<div class='inserare delegati'>
+        <form action='insert_delegati.php'>
+          <input type='submit' value='Inserare delegati'>
+        </form>
+      </div>";
+    }
+    else{
+      echo "
+            <div class='login_hack'>
+              <form action='index.php'>
+                <input type='submit' value='Login'>
+              </form>
+            </div>
+            ";
+    }
+?>
   </body>
 </html>

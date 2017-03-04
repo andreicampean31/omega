@@ -35,3 +35,19 @@ header{
   cursor: pointer;
   transition: background 0.3s ease-in-out;
 }
+.login_hack{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+}
+.login_hack input[type="submit"]{
+  border: none;
+  height: 50px;
+  width: 200%;
+  background: #c12a2a;
+}
