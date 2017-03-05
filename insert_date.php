@@ -8,6 +8,8 @@
    <input type="text" name="denumire_produs" placeholder="Denumire produs">
    <input type="text" name="ART" placeholder="ART (neobligatoriu)">
    <input type="text" name="comentariu" placeholder="Comentariu (neobligatoriu)">
+   <input type="text" name="firma_id" placeholder="Firma">
+   <input type="text" name="delegat" placeholder="Delegat">
    <!-- buc selection -->
    <input type="text" name="cantitate" placeholder="Cantitate">
    <input type="text" name="mentiuni1" placeholder="Mentiune 1 (neobligatoriu)">
