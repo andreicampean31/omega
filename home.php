@@ -1,6 +1,8 @@
 <?php
   include 'header.php';
+?>
 
+<?php
     if(isset( $_SESSION['uid'])){
       echo "<div class='facturare'>
         <form action='facturare.php'>
@@ -8,7 +10,7 @@
         </form>
       </div>";
       echo "<div class='inserare date'>
-        <form action='includes\insert_date.inc.php'>
+        <form action='insert_date.php'>
           <input type='submit' value='Inserare date'>
         </form>
       </div>";

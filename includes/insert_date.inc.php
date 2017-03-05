@@ -1,7 +1,7 @@
 <?php
   include '../dbh.php';
   session_start();
-
+  $cota_tva = 19/100; //de pus la setari pe viitor
   //variabile de introdus
 
     $cod_produs = $_POST['cod_produs'];
@@ -17,15 +17,23 @@
     $pret_ofertat = $_POST['pret_ofertat'];
     $reducere_acordata = $_POST['reducere_acordata'];
 
-    $sql_var_introduse = "INSERT INTO introducere (cod_produs, nr_aviz, denumire_produs,
-            ART, comentariu, cantitate, mentiuni1, mentiuni2, nr_factura,
-            termen_plata, pret_ofertat, reducere_acordata)
-            VALUES ('$cod_produs', '$nr_aviz', '$denumire_produs','$ART',
-            '$comentariu', '$cantitate', '$mentiuni1', '$mentiuni2',
-            '$nr_factura', '$termen_plata', '$pret_ofertat', '$reducere_acordata')
-            "; //introducere in baza de date
-    $result_var_introduse = mysqli_query($conn, $sql_var_introduse);
-
-  //variabile calculate
-
+  //variabile calcualte
     $pret_ron = $pret_ofertat*(1+$reducere_acordata);
+    $valoare = $pret_ron*$cantitate;
+    $TVA = $valoare*$cota_tva;
+    $facturat_ron = $valoare+$TVA;
+    echo $pret_ron. "<br>";
+    echo $valoare. "<br>";
+    echo $TVA. "<br>";
+    echo $facturat_ron. "<br>";
+
+  //firma si delegat
+
+    
+    $sql_var_introduse = "INSERT INTO introducere (cod_produs, nr_aviz, denumire_produs,
+    ART, comentariu, pret_ron, cantitate, mentiuni1, mentiuni2, nr_factura, valoare, TVA,
+    facturat_ron, termen_plata, pret_ofertat, reducere_acordata) VALUES ('$cod_produs',
+    '$nr_aviz', '$denumire_produs', '$ART', '$comentariu', '$pret_ron', '$cantitate',
+    '$mentiuni1', '$mentiuni2', '$nr_factura', '$valoare', '$TVA', '$facturat_ron',
+    '$termen_plata', '$pret_ofertat', '$reducere_acordata')";
+    $result_var_introduse = mysqli_query($conn, $sql_var_introduse);

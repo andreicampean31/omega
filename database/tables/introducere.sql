@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 05, 2017 at 08:59 
+-- Generation Time: Mar 05, 2017 at 11:08 
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.9
 
@@ -33,8 +33,8 @@ CREATE TABLE `introducere` (
   `denumire_produs` varchar(128) NOT NULL,
   `ART` varchar(128) DEFAULT NULL,
   `comentariu` varchar(128) DEFAULT NULL,
-  `pret_euro` int(11) DEFAULT NULL,
-  `pret_ron` int(11) NOT NULL,
+  `pret_euro` float DEFAULT NULL,
+  `pret_ron` decimal(11,2) NOT NULL,
   `cantitate` int(11) NOT NULL,
   `firma` varchar(500) DEFAULT NULL,
   `cif` varchar(500) DEFAULT NULL,
@@ -53,13 +53,13 @@ CREATE TABLE `introducere` (
   `mentiuni1` varchar(128) DEFAULT NULL,
   `mentiuni2` varchar(128) DEFAULT NULL,
   `nr_factura` int(11) NOT NULL,
-  `valoare` int(11) NOT NULL,
-  `TVA` int(11) NOT NULL,
-  `facturat_ron` int(11) NOT NULL,
+  `valoare` decimal(11,2) NOT NULL,
+  `TVA` decimal(11,2) NOT NULL,
+  `facturat_ron` decimal(11,2) NOT NULL,
   `termen_plata` int(11) NOT NULL,
   `scadenta` int(11) NOT NULL,
-  `pret_ofertat` int(11) NOT NULL,
-  `reducere_acordata` int(11) NOT NULL
+  `pret_ofertat` decimal(11,2) NOT NULL,
+  `reducere_acordata` decimal(11,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -80,7 +80,7 @@ ALTER TABLE `introducere`
 -- AUTO_INCREMENT for table `introducere`
 --
 ALTER TABLE `introducere`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -2,7 +2,7 @@
   include 'header.php';
  ?>
 
- <form class="" action="insert_date.inc.php" method="post">
+ <form class="" action="includes/insert_date.inc.php" method="post">
    <input type="text" name="cod_produs" placeholder="Cod produs">
    <input type="text" name="nr_aviz" placeholder="Numar aviz">
    <input type="text" name="denumire_produs" placeholder="Denumire produs">
