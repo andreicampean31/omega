@@ -24,10 +24,11 @@
     $valoare = $pret_ron*$cantitate;
     $TVA = $valoare*$cota_tva;
     $facturat_ron = $valoare+$TVA;
+    /*
     echo $pret_ron. "<br>";
     echo $valoare. "<br>";
     echo $TVA. "<br>";
-    echo $facturat_ron. "<br>";
+    echo $facturat_ron. "<br>";*/
 
   //firma si delegat
 
@@ -47,13 +48,14 @@
       $judet = $row_firma['judet'];
     }
     //test
+    /*
     echo $firma. "<br>";
     echo $cif. "<br>";
     echo $nr_inm_reg_com. "<br>";
     echo $localitate. "<br>";
     echo $strada. "<br>";
     echo $nr. "<br>";
-    echo $judet. "<br>";
+    echo $judet. "<br>";*/
 
     $sql_delegat = "SELECT * FROM lista_delegati WHERE id_delegat='$delegat'"; //interogare pt delegat
     $result_delegat = mysqli_query($conn, $sql_delegat);
@@ -68,13 +70,14 @@
       $ora = $row_delegat['ora'];
     }
     //test
+    /*
     echo $nume_delegat. "<br>";
     echo $serie_buletin. "<br>";
     echo $nr_buletin. "<br>";
     echo $eliberat_de. "<br>";
     echo $cnp. "<br>";
     echo $nr_mijloc_transport. "<br>";
-    echo $ora. "<br>";
+    echo $ora. "<br>";*/
 
     //insrare date
 
@@ -86,4 +89,6 @@
     '$nr_aviz', '$denumire_produs', '$ART', '$comentariu', '$pret_ron', '$cantitate', '$firma', '$cif', '$nr_inm_reg_com', '$localitate', '$strada', '$nr', '$judet', '$nume_delegat',
     '$serie_buletin', '$nr_buletin', '$eliberat_de', '$cnp', '$nr_mijloc_transport', '$ora', '$mentiuni1', '$mentiuni2', '$nr_factura', '$valoare', '$TVA', '$facturat_ron',
     '$termen_plata', '$pret_ofertat', '$reducere_acordata')"; //inserare date in tabelul INTRODUCERE
-    $result_var_introduse = mysqli_query($conn, $sql_introducere);
+    $result_introducere = mysqli_query($conn, $sql_introducere);
+
+    header("Location: ../insert_date.php");

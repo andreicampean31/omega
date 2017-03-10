@@ -19,6 +19,9 @@
                echo "<form class='' action='includes\logout.inc.php' method='post'>
                  <input type='submit' name='' value='logout'>
                </form>";
+               echo "<form class='' action='home.php' method='post'>
+                 <input type='submit' name='' value='home'>
+               </form>";
              }
              else{
                echo "You are not logged in and you can't see the content of this page.";
