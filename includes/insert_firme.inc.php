@@ -11,11 +11,8 @@
   $nr = $_POST['nr'];
   $jud = $_POST['judet'];
 
-  $sql_delegat = "INSERT INTO lista_firme (id_firma, firma, cif, nr_inm_reg_com, localitate, strada, nr, judet)
+  $sql_firma = "INSERT INTO lista_firme (id_firma, firma, cif, nr_inm_reg_com, localitate, strada, nr, judet)
                   VALUES ('$id_firma', '$firma', '$cif', '$reg', '$loc', '$str', '$nr', '$jud')";
-  $result_delegat = mysqli_query($conn, $sql_delegat);
+  $result_firma = mysqli_query($conn, $sql_firma);
 
   header("Location: ../insert_firme.php");
-
-
- ?>

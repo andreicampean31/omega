@@ -51,3 +51,26 @@ header{
   width: 200%;
   background: #c12a2a;
 }
+.table_firme_delegat{
+
+  margin: 0px;
+}
+.table_firme_delegat caption{
+  font-size: 150%;
+  background: pink;
+}
+.table_firme_delegat th{
+  background: blue;
+}
+.table_firme_delegat tr:nth-child(even){
+  background: white;
+}
+.table_firme_delegat tr:nth-child(odd){
+  background: yellow;
+}
+.table_firme_delegat td{
+  text-align: center;
+}
+.table_firme_delegat input{
+  width: 90%;
+}
