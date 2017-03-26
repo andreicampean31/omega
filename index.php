@@ -20,6 +20,18 @@
      	   <button type="submit" id="login-button">Login</button>
      	 </form>
    	</div>
+    <?php
+      $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
+      if(strpos($url, 'error=wrpwd') != false){
+        echo "you entered a wrong password";
+      }
+      else{
+        if(isset($_SESSION['uid'])){
+          header("Location: home.php");
+        }
+      }
+     ?>
    	<ul class="bg-bubbles">
    		<li></li>
    		<li></li>
@@ -35,11 +47,5 @@
   </div>
    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
      <script src="js/index.js"></script>
-
-     <?php
-      if(isset($_SESSION['uid'])){
-        header("Location: home.php");
-      }
-    ?>
    </body>
  </html>

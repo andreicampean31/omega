@@ -12,5 +12,11 @@
       <input type="text" name="nr_mij_transp" placeholder="Numar mijloc de transport">
       <input type="submit" name="" value="Insert">
     </form>
+    <?php
+      $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+      if(strpos($url, 'error=empty') != false){
+        echo "you left one or more fileds empty";
+      }
+     ?>
   </body>
 </html>

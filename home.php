@@ -24,6 +24,11 @@
           <input type='submit' value='Inserare delegati'>
         </form>
       </div>";
+      echo "<div class='setari'>
+        <form action='setari.php'>
+          <input type='submit' value='Setari'>
+        </form>
+      </div>";
     }
     else{
       echo "
