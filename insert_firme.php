@@ -41,7 +41,7 @@
                       <td><input type='text' name='strada' placeholder='strada'> </td>
                       <td><input type='text' name='nr' placeholder='nr'> </td>
                       <td><input type='text' name='judet' placeholder='judet'> </td>
-                      <td><input type='submit' name=' value='Insert'> </td>
+                      <td><input type='submit' value='Insert'> </td>
                     </tr></form>";
       echo "</table>";
       ?>

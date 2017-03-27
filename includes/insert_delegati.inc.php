@@ -10,13 +10,21 @@
   $cnp = $_POST['cnp']; //cnp-ul
   $mij = $_POST['nr_mij_transp']; //numarul de inmatricualre
 
+  /*test
+  echo $id_delegat. "<br>";
+  echo $nume. "<br>";
+  echo $serie. "<br>";
+  echo $nr. "<br>";
+  echo $elib. "<br>";
+  echo $cnp. "<br>";
+  echo $mij. "<br>";*/
   if( empty($id_delegat) || empty($nume) || empty($serie) || empty($nr) || empty($elib) || empty($cnp) || empty($mij) ){ //verificare spatii libere
     header("Location: ../insert_delegati.php?error=empty"); //link eroare spatii libere
     exit();
   }
   else{ //daca nu sunt spatii libere se insereaza in DB
     $sql_delegat = "INSERT INTO lista_delegati (id_delegat, nume_delegat, serie_buletin, nr_buletin, eliberat_de, cnp, nr_mijloc_transport)
-                    VALUES ('$id_delegat', '$nume', '$serie', '$nr', '$elib', '$cnp', '$mij')"; //inserare delegati 
+                    VALUES ('$id_delegat', '$nume', '$serie', '$nr', '$elib', '$cnp', '$mij')"; //inserare delegati
     $result_delegat = mysqli_query($conn, $sql_delegat); //rezultatul inserarii
   }
   header("Location: ../insert_delegati.php");
