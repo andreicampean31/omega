@@ -1,13 +1,13 @@
 <?php
 
   include 'header.php';
-  session_start();
+
 
   $sql_tva_actual = "SELECT cota_tva FROM setari"; //cauta valuarea actuala tva in DB
   $result_tva_acutal = mysqli_query($conn, $sql_tva_actual);
 
   if($row = mysqli_fetch_assoc($result_tva_acutal)){ //daca exista raspuns il afiseaza
-    echo "Cota actuala TVA este: ". $row['cota_tva']. "%"
+    echo "Cota actuala TVA este: ". $row['cota_tva']. "%";
     echo "<form action='setari.php' method='GET'>
       <input type='submit' name='cota_tva' value='Schimba cota TVA'>
     </form>"; //posibilitatea de a schimba valoarea
