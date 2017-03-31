@@ -1,6 +1,6 @@
 <?php
-  session_start();
-
+  //session_start();
+  ob_start();
  ?>
  <!DOCTYPE html>
  <html >
@@ -21,6 +21,8 @@
      	 </form>
    	</div>
     <?php
+
+
       $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
       if(strpos($url, 'error=wrpwd') != false){
@@ -45,6 +47,7 @@
    		<li></li>
    	</ul>
   </div>
+  </form>
    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
      <script src="js/index.js"></script>
    </body>

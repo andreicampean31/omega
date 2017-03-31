@@ -5,10 +5,13 @@
   $sql_aratadelegati = "SELECT * FROM lista_delegati";
   $result_aratadelegati = mysqli_query($conn, $sql_aratadelegati);
 
-  echo "<table class='table_firme_delegat'>
-          <caption>Delegati</caption>
+  echo "<h2 class='text-center'>Lista delegatilor</h2> <br> <br>
+        <div class='row'>
+        <div class='container-fluid'>
+        <div class='table-responsive'>
+        <table class='table'>
           <tr>
-            <th>id</th>
+            <th> id</th>
             <th>id_delegat</th>
             <th>Nume delegat</th>
             <th>Serie buletin</th>
@@ -28,26 +31,28 @@
             echo "<td>". $row_aratadelegati['nr_mijloc_transport']. "</td></tr>";
             echo "<br>";
           }
-          echo "<form class='' action='includes/insert_delegati.inc.php' method='post'>
-                  <tr>
-                    <td></td>
-                    <td><input type='text' name='id_delegat' placeholder='id delegat'> </td>
-                    <td><input type='text' name='nume_delegat' placeholder='nume delegat'> </td>
-                    <td><input type='text' name='serie_buletin' placeholder='serie buletin'> </td>
-                    <td><input type='text' name='nr_buletin' placeholder='numar buletin'> </td>
-                    <td><input type='text' name='eliberat_de' placeholder='eliberat de'> </td>
-                    <td><input type='text' name='cnp' placeholder='CNP'> </td>
-                    <td><input type='text' name='nr_mij_transp' placeholder='Numar mijloc de transport'> </td>
-                    <td><input type='submit' value='Insert'> </td>
-                  </tr></form>";
-    echo "</table>";
+
+    echo "</table></div></div></div></div>";
 
       $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
       if(strpos($url, 'error=empty') != false){
         echo "you left one or more fileds empty";
       }
      ?>
+       <form class='form-inline ' action="includes/insert_delegati.inc.php" method="post">
+          <input type="text" name="id_delegat" placeholder="id delegat">
+          <input type="text" name="nume_delegat" placeholder="nume delegat">
+          <input type="text" name="serie_buletin" placeholder="serie buletin">
+          <input type="text" name="nr_buletin" placeholder="numar buletin">
+          <input type="text" name="eliberat_de" placeholder="eliberat de">
+          <input type="text" name="cnp" placeholder="CNP">
+          <input type="text" name="nr_mij_transp" placeholder="Numar mijloc de transport">
+          <input type="submit" value="Insert">
+        </form>
 
-
+      </section>
+  <?php
+      include 'footer.php';
+   ?>
   </body>
 </html>
