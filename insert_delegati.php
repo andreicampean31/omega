@@ -5,13 +5,14 @@
   $sql_aratadelegati = "SELECT * FROM lista_delegati";
   $result_aratadelegati = mysqli_query($conn, $sql_aratadelegati);
 
-  echo "<h2 class='text-center'>Lista delegatilor</h2> <br> <br>
+  echo "<h2 class='text-center'>Lista delegatilor</h2>
         <div class='row'>
         <div class='container-fluid'>
         <div class='table-responsive'>
         <table class='table'>
           <tr>
-            <th> id</th>
+            <th>delete</th>
+            <th>id</th>
             <th>id_delegat</th>
             <th>Nume delegat</th>
             <th>Serie buletin</th>
@@ -21,7 +22,11 @@
             <th>nr mij transp</th>
           </tr>";
           while($row_aratadelegati = mysqli_fetch_array($result_aratadelegati)){
-            echo "<tr><td>". $row_aratadelegati['id']. "</td>";
+            echo "<tr>
+            <td>
+              <a href='includes\delete.inc.php?delegatid=". $row_aratadelegati['id']."'>Delete</a>
+            </td>
+            <td>". $row_aratadelegati['id']. "</td>";
             echo "<td>". $row_aratadelegati['id_delegat']. "</td>";
             echo "<td>". $row_aratadelegati['nume_delegat']. "</td>";
             echo "<td>". $row_aratadelegati['serie_buletin']. "</td>";

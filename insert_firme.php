@@ -4,13 +4,13 @@
     //intertogare
     $sql_aratafirma = "SELECT * FROM lista_firme";
     $result_aratafirma = mysqli_query($conn, $sql_aratafirma);
-
-    echo "<h2 class='text-center'>Lista firmelor</h2> <br> <br>
+    echo "<h2 class='text-center'>Lista firmelor</h2>
           <div class='row'>
           <div class='container-fluid'>
           <div class='table-responsive'>
           <table class='table'>
             <tr>
+              <th>delete</th>
               <th>id</th>
               <th>id_firma</th>
               <th>firma</th>
@@ -22,7 +22,11 @@
               <th>judet</th>
             </tr>";
             while($row_aratafirma = mysqli_fetch_array($result_aratafirma)){
-              echo "<tr><td>". $row_aratafirma['id']. "</td>";
+              echo "<tr>
+              <td>
+                <a href='includes\delete.inc.php?firmaid=". $row_aratafirma['id']."'>Delete</a>
+              </td>
+              <td>". $row_aratafirma['id']. "</td>";
               echo "<td>". $row_aratafirma['id_firma']. "</td>";
               echo "<td>". $row_aratafirma['firma']. "</td>";
               echo "<td>". $row_aratafirma['cif']. "</td>";
