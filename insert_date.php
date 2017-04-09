@@ -10,6 +10,16 @@
    <input type="text" name="comentariu" placeholder="Comentariu (neobligatoriu)">
    <input type="text" name="firma_id" placeholder="Firma">
    <input type="text" name="delegat" placeholder="Delegat">
+   <select class="" name="firma">
+     <?php
+       $sql_listafirma = "SELECT * FROM lista_firme";
+       $result_listafirma = mysqli_query($conn, $sql_listafirma);
+
+       while($row_listafirma = mysqli_fetch_array($result_listafirma)){
+         echo '<option>' .$row_listafirma['prescurtare_firma']. '</option>';
+       }
+      ?>
+   </select>
    <!-- buc selection -->
    <input type="text" name="cantitate" placeholder="Cantitate">
    <input type="text" name="mentiuni1" placeholder="Mentiune 1 (neobligatoriu)">
@@ -18,12 +28,10 @@
    <input type="text" name="termen_plata" placeholder="Termen plata">
    <input type="text" name="pret_ofertat" placeholder="Pret ofertat">
    <input type="text" name="reducere_acordata" placeholder="Reducere acordata">
-   <?php
-      //lista firme
-      
-    ?>
    <input type="submit" value="Insert">
  </form>
+<form class="" action="includes/insert_date.inc.php" method="post">
 
+</form>
  </body>
  </html>

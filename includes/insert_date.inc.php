@@ -2,7 +2,10 @@
   include '../dbh.php';
   session_start();
 
-  $sql_tva = "SELECT cota_tva FROM setari"; //cauta valuarea actuala tva in DB
+  $firma = $_POST['firma'];
+  echo $firma;
+
+  /*$sql_tva = "SELECT cota_tva FROM setari"; //cauta valuarea actuala tva in DB
   $result_tva = mysqli_query($conn, $sql_tva);
 
   if($row = mysqli_fetch_assoc($result_tva)){
@@ -98,4 +101,4 @@
     '$nr_factura', '$valoare', '$cota_tva', '$TVA' '$facturat_ron', '$termen_plata', '$pret_ofertat', '$reducere_acordata')"; //inserare date in tabelul INTRODUCERE
     $result_introducere = mysqli_query($conn, $sql_introducere);
 
-    //header("Location: ../insert_date.php");
+    //header("Location: ../insert_date.php");*/
