@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 31, 2017 at 09:59 
--- Server version: 10.1.19-MariaDB
--- PHP Version: 7.0.9
+-- Host: 127.0.0.1
+-- Generation Time: 25 Apr 2017 la 10:38
+-- Versiune server: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,59 +23,47 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `introducere`
+-- Structura de tabel pentru tabelul `comanda`
 --
 
-CREATE TABLE `introducere` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `cod_produs` int(11) NOT NULL,
-  `nr_aviz` int(11) NOT NULL,
-  `denumire_produs` varchar(128) NOT NULL,
-  `ART` varchar(128) DEFAULT NULL,
-  `comentariu` varchar(128) DEFAULT NULL,
-  `pret_euro` float DEFAULT NULL,
-  `pret_ron` decimal(11,2) NOT NULL,
-  `cantitate` int(11) NOT NULL,
-  `firma` varchar(500) DEFAULT NULL,
-  `cif` varchar(500) DEFAULT NULL,
-  `nr_inm_reg_com` varchar(500) DEFAULT NULL,
-  `localitate` varchar(500) DEFAULT NULL,
-  `strada` varchar(500) DEFAULT NULL,
-  `nr` int(128) DEFAULT NULL,
-  `judet` varchar(500) DEFAULT NULL,
-  `nume_delegat` varchar(128) DEFAULT NULL,
-  `serie_buletin` varchar(2) DEFAULT NULL,
-  `nr_buletin` int(11) DEFAULT NULL,
-  `eliberat_de` varchar(128) DEFAULT NULL,
-  `cnp` int(20) DEFAULT NULL,
-  `nr_mijloc_transport` varchar(128) DEFAULT NULL,
-  `ora` int(2) DEFAULT NULL,
-  `mentiuni1` varchar(128) DEFAULT NULL,
-  `mentiuni2` varchar(128) DEFAULT NULL,
-  `nr_factura` int(11) NOT NULL,
-  `valoare` decimal(11,2) NOT NULL,
-  `valoare_TVA` int(11) DEFAULT NULL,
-  `TVA` decimal(11,2) NOT NULL,
-  `facturat_ron` decimal(11,2) NOT NULL,
+CREATE TABLE `comanda` (
+  `id` int(11) NOT NULL,
+  `denumire_produs` varchar(121) NOT NULL,
+  `pretRON` float NOT NULL,
+  `U_M` varchar(121) NOT NULL,
+  `cantitate` int(11) DEFAULT NULL,
+  `firma` varchar(121) NOT NULL,
+  `delegat` varchar(121) NOT NULL,
+  `mentiuni1` varchar(121) DEFAULT NULL,
+  `mentiuni2` varchar(121) DEFAULT NULL,
+  `cota_tva` float NOT NULL,
+  `valoare` float NOT NULL,
+  `tva` float NOT NULL,
+  `facturatRON` float NOT NULL,
   `termen_plata` int(11) NOT NULL,
-  `scadenta` int(11) NOT NULL,
-  `pret_ofertat` decimal(11,2) NOT NULL,
-  `reducere_acordata` float(11,2) NOT NULL
+  `persoana_contact` varchar(11) NOT NULL,
+  `pret_ofertat` float NOT NULL,
+  `reducere` float DEFAULT NULL,
+  `nr_comanda` int(11) NOT NULL,
+  `termen_livrare` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `introducere`
+-- Salvarea datelor din tabel `comanda`
 --
 
-INSERT INTO `introducere` (`id`, `cod_produs`, `nr_aviz`, `denumire_produs`, `ART`, `comentariu`, `pret_euro`, `pret_ron`, `cantitate`, `firma`, `cif`, `nr_inm_reg_com`, `localitate`, `strada`, `nr`, `judet`, `nume_delegat`, `serie_buletin`, `nr_buletin`, `eliberat_de`, `cnp`, `nr_mijloc_transport`, `ora`, `mentiuni1`, `mentiuni2`, `nr_factura`, `valoare`, `valoare_TVA`, `TVA`, `facturat_ron`, `termen_plata`, `scadenta`, `pret_ofertat`, `reducere_acordata`) VALUES
-(20, 1, 1, 'Rectificat matrita', '', '', NULL, '410.00', 1, 'S.C. COFICAB EASTERN EUROPE S.R.L.', 'RO16876750\r\n', 'J02 / 1625 / 2006', 'ARAD', 'ZONA IND. VEST\r\n', 3, 'ARAD', 'Campean Cristian\r\n', 'AR', 356045, 'Arad', 2147483647, 'B-57-HFL', 10, '', '', 1, '410.00', NULL, '77.90', '487.90', 30, 0, '410.00', 0.00),
-(32, 61, 41, 'Adaptor desen 9BXXJB-006-000', '', '', NULL, '35.00', 28, 'S.C. COFICAB EASTERN EUROPE S.R.L.', 'RO16876750\r\n', 'J02 / 1625 / 2006', 'ARAD', 'ZONA IND. VEST\r\n', 3, 'ARAD', 'Campean Cristian\r\n', 'AR', 356045, 'Arad', 2147483647, 'B-57-HFL', 10, '', '', 39, '980.00', NULL, '186.20', '1166.20', 30, 0, '35.00', 0.00),
-(33, 0, 0, '', '', '', NULL, '0.00', 0, 'S.C. COFICAB EASTERN EUROPE S.R.L.', 'RO16876750\r\n', 'J02 / 1625 / 2006', 'ARAD', 'ZONA IND. VEST\r\n', 3, 'ARAD', 'Campean Cristian\r\n', 'AR', 356045, 'Arad', 2147483647, 'B-57-HFL', 10, '', '', 0, '0.00', NULL, '0.00', '0.00', 0, 0, '0.00', 0.00);
+INSERT INTO `comanda` (`id`, `denumire_produs`, `pretRON`, `U_M`, `cantitate`, `firma`, `delegat`, `mentiuni1`, `mentiuni2`, `cota_tva`, `valoare`, `tva`, `facturatRON`, `termen_plata`, `persoana_contact`, `pret_ofertat`, `reducere`, `nr_comanda`, `termen_livrare`) VALUES
+(1, 'Saibe grover M7', 2.5, 'buc', 16, 'S.C. COFICAB EASTERN EUROPE S.R.L.', 'dcfadsf', '', '', 19, 40, 8, 48, 30, 'dasda', 2.5, 0, 78, '0000-00-00'),
+(2, 'Saibe grover M7', 2, 'buc', 16, 'S.C. COFICAB EASTERN EUROPE S.R.L.', 'dcfadsf', '', '', 19, 32, 6, 38, 30, 'sda', 2.5, -0.2, 90, '2016-03-12'),
+(3, 'Ac imprimanta', 30, 'buc', 1, 'S.C. GDS MANUFACTURING SERVICES S.A.', 'dcfadsf', '', '', 19, 30, 6, 36, 30, 'asda', 30, 0, 0, '0000-00-00'),
+(4, 'Ac imprimanta', 28.5, 'buc', 1, 'S.C. COFICAB EASTERN EUROPE S.R.L.', 'dcfadsf', '', '', 19, 28.5, 5, 33.5, 30, 'dfsdfs', 30, -0.05, 100, '2016-02-15'),
+(5, 'Ax pinola', 450, 'buc', 4, 'S.C. COFICAB EASTERN EUROPE S.R.L.', 'dcfadsf', '', '', 19, 1800, 342, 2142, 30, 'fdsf', 450, 0, 2, '2017-05-30'),
+(6, 'Ac imprimantadad', 80, 'buc', 32, 'S.C. COFICAB EASTERN EUROPE S.R.L.', 'dcfadsf', '', '', 19, 2560, 486, 3046, 30, 'sdasdsa', 80, 0, 23, '2017-04-21');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lista_delegati`
+-- Structura de tabel pentru tabelul `lista_delegati`
 --
 
 CREATE TABLE `lista_delegati` (
@@ -91,20 +79,19 @@ CREATE TABLE `lista_delegati` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `lista_delegati`
+-- Salvarea datelor din tabel `lista_delegati`
 --
 
 INSERT INTO `lista_delegati` (`id`, `id_delegat`, `nume_delegat`, `serie_buletin`, `nr_buletin`, `eliberat_de`, `cnp`, `nr_mijloc_transport`, `ora`) VALUES
 (1, 'cristi', 'Campean Cristian\r\n', 'AR', 356045, 'Arad', 2147483647, 'B-57-HFL', 10),
 (2, 'Andrei', 'Andrei Campean', 'AR', 667933, 'Arad', 2147483647, 'B-59-HFL', 0),
 (3, 'Ramona', 'Ramona F. Campean', 'AR', 321231, 'Arad', 23142134, 'B-59-HFL', 0),
-(4, 'iulia', 'Iulia Campean', 'AR', 4213412, 'ARAD', 2147483647, 'B-57-HFL', 0),
-(5, 'dfasd', 'dsfasdf', 'as', 0, 'dsfasdf', 2314213, 'fasdfas', 0);
+(4, 'cristi', 'dcfadsf', 'ds', 524523, 'dsfsd', 432532, '5432d', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lista_firme`
+-- Structura de tabel pentru tabelul `lista_firme`
 --
 
 CREATE TABLE `lista_firme` (
@@ -120,22 +107,45 @@ CREATE TABLE `lista_firme` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `lista_firme`
+-- Salvarea datelor din tabel `lista_firme`
 --
 
 INSERT INTO `lista_firme` (`id`, `id_firma`, `firma`, `cif`, `nr_inm_reg_com`, `localitate`, `strada`, `nr`, `judet`) VALUES
 (1, 'coficab', 'S.C. COFICAB EASTERN EUROPE S.R.L.', 'RO16876750\r\n', 'J02 / 1625 / 2006', 'ARAD', 'ZONA IND. VEST\r\n', '3', 'ARAD'),
 (2, 'hema', 'S.C. Advantage Hema Innovations S.R.L.\n', 'RO21599779\n', 'J02 / 817 / 2007\n', 'ARAD', 'ZONA IND. VEST', '10', 'Arad'),
 (3, 'coindu', 'S.C. COINDU ROMANIA S.R.L.\n', 'RO16853918\n', 'J02/1760/2004\n', 'CURTICI', 'Zona libera Curtici\n', 'Parcela 8', 'ARAD'),
-(4, 'gds', 'S.C. GDS MANUFACTURING SERVICES S.A.', 'RO16083118', 'J02 / 46 / 2009', 'ARAD', 'ZONA IND. VEST', '11-15', 'ARAD'),
-(5, 'asd', 'adas', 'dsada', 'da', 'das', 'dasd', 'asdas', 'dads'),
-(6, '', '', '', '', '', '', '', ''),
-(7, 'vdfvsdfv', '', '', '', '', '', '', '');
+(4, 'gds', 'S.C. GDS MANUFACTURING SERVICES S.A.', 'RO16083118', 'J02 / 46 / 2009', 'ARAD', 'ZONA IND. VEST', '11-15', 'ARAD');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `setari`
+-- Structura de tabel pentru tabelul `oferte`
+--
+
+CREATE TABLE `oferte` (
+  `id` int(11) NOT NULL,
+  `denumire_produs` varchar(121) NOT NULL,
+  `pretRON` float NOT NULL,
+  `U_M` varchar(121) NOT NULL,
+  `cantitate` int(11) DEFAULT NULL,
+  `firma` varchar(121) NOT NULL,
+  `delegat` varchar(121) NOT NULL,
+  `mentiuni1` varchar(121) DEFAULT NULL,
+  `mentiuni2` varchar(121) DEFAULT NULL,
+  `cota_tva` float NOT NULL,
+  `valoare` float NOT NULL,
+  `tva` float NOT NULL,
+  `facturatRON` float NOT NULL,
+  `termen_plata` int(11) NOT NULL,
+  `persoana_contact` varchar(11) NOT NULL,
+  `pret_ofertat` float NOT NULL,
+  `reducere` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structura de tabel pentru tabelul `setari`
 --
 
 CREATE TABLE `setari` (
@@ -144,7 +154,7 @@ CREATE TABLE `setari` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `setari`
+-- Salvarea datelor din tabel `setari`
 --
 
 INSERT INTO `setari` (`id`, `cota_tva`) VALUES
@@ -153,7 +163,7 @@ INSERT INTO `setari` (`id`, `cota_tva`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structura de tabel pentru tabelul `users`
 --
 
 CREATE TABLE `users` (
@@ -163,7 +173,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Salvarea datelor din tabel `users`
 --
 
 INSERT INTO `users` (`id`, `uid`, `pwd`) VALUES
@@ -175,10 +185,10 @@ INSERT INTO `users` (`id`, `uid`, `pwd`) VALUES
 --
 
 --
--- Indexes for table `introducere`
+-- Indexes for table `comanda`
 --
-ALTER TABLE `introducere`
-  ADD UNIQUE KEY `id` (`id`);
+ALTER TABLE `comanda`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `lista_delegati`
@@ -190,6 +200,12 @@ ALTER TABLE `lista_delegati`
 -- Indexes for table `lista_firme`
 --
 ALTER TABLE `lista_firme`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oferte`
+--
+ALTER TABLE `oferte`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -209,20 +225,25 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `introducere`
+-- AUTO_INCREMENT for table `comanda`
 --
-ALTER TABLE `introducere`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+ALTER TABLE `comanda`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `lista_delegati`
 --
 ALTER TABLE `lista_delegati`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `lista_firme`
 --
 ALTER TABLE `lista_firme`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `oferte`
+--
+ALTER TABLE `oferte`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `setari`
 --
