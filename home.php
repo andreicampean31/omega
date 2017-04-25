@@ -1,9 +1,6 @@
 <?php
   include 'header.php';
-?>
 
-
-<?php
     echo '
           <div class="row">';
 
@@ -11,31 +8,37 @@
       echo '
           <div class="col-sm-4 portfolio-item">
               <a href="facturare.php" class="portfolio-link" data-toggle="modal">
-                          <i class="fa fa-3x">facturare</i>
+                          <i class="fa fa-3x">Facturare</i>
               </a>
           </div>';
       echo '
           <div class="col-sm-4 portfolio-item">
-              <a href="insert_date.php" class="portfolio-link" data-toggle="modal">
-                          <i class="fa fa-3x">introducere</i>
+              <a href="ofertare.php" class="portfolio-link" data-toggle="modal">
+                          <i class="fa fa-3x">Ofertare</i>
+              </a>
+          </div>';
+      echo '
+          <div class="col-sm-4 portfolio-item">
+              <a href="comanda.php" class="portfolio-link" data-toggle="modal">
+                          <i class="fa fa-3x">Comenzi</i>
               </a>
           </div>';
       echo '
           <div class="col-sm-4 portfolio-item">
               <a href="insert_delegati.php" class="portfolio-link" data-toggle="modal">
-                          <i class="fa fa-3x">delegati</i>
+                          <i class="fa fa-3x">Delegati</i>
               </a>
           </div>';
       echo '
           <div class="col-sm-4 portfolio-item">
               <a href="insert_firme.php" class="portfolio-link" data-toggle="modal">
-                          <i class="fa fa-3x">firme</i>
+                          <i class="fa fa-3x">Firme</i>
               </a>
           </div>';
       echo '
           <div class="col-sm-4 portfolio-item">
               <a href="setari.php" class="portfolio-link" data-toggle="modal">
-                          <i class="fa fa-3x">setari</i>
+                          <i class="fa fa-3x">Setari</i>
               </a>
           </div>';
       }

@@ -4,9 +4,16 @@
     //intertogare
     $sql_aratafirma = "SELECT * FROM lista_firme";
     $result_aratafirma = mysqli_query($conn, $sql_aratafirma);
-    echo "<h2 class='text-center'>Lista firmelor</h2>
-          <div class='row'>
-          <div class='container-fluid'>
+    echo "<h2 class='text-center'>Lista firmelor</h2>";
+          $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+          if(strpos($url, 'error=empty') != false){
+            echo '<div class="container">
+                  <div class="alert alert-danger alert-dismissable">
+                    <a href="insert_firme.php" class="close" data-dismiss="alert" aria-label="close">&times</a>
+                    <strong>Atentie!</strong>Ai lasat unul sau mai multe campuri libere!
+                  </div></div>';
+          }
+          echo "<div class='container-fluid'>
           <div class='table-responsive'>
           <table class='table'>
             <tr>
@@ -38,27 +45,21 @@
               echo "<br>";
             }
       echo "</table></div></div></div></div>";
-
-      $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-      if(strpos($url, 'error=empty') != false){
-        echo "you left one or more fileds empty";
-      }
       ?>
 
-      <form class="" action="includes/insert_firme.inc.php" method="post">
-        <tr>
-          <td></td>
-          <td><input type="text" name="id_firma" placeholder="id firma"> </td>
-          <td><input type="text" name="firma" placeholder="nume firma"> </td>
-          <td><input type="text" name="cif" placeholder="CIF"> </td>
-          <td><input type="text" name="nr_inm_reg_com" placeholder="nr_inm_reg_com"> </td>
-          <td><input type="text" name="localitate" placeholder="localitatea"> </td>
-          <td><input type="text" name="strada" placeholder="strada"> </td>
-          <td><input type="text" name="nr" placeholder="nr"> </td>
-          <td><input type="text" name="judet" placeholder="judet"> </td>
-          <td><input type="submit" value="Insert"> </td>
-        </tr>
-      </form>
+      <div class="container">
+        <form class="" action="includes/insert_firme.inc.php" method="post">
+            <input type="text" name="id_firma" placeholder="id firma">
+            <input type="text" name="firma" placeholder="nume firma">
+            <input type="text" name="cif" placeholder="CIF">
+            <input type="text" name="nr_inm_reg_com" placeholder="nr_inm_reg_com">
+            <input type="text" name="localitate" placeholder="localitatea">
+            <input type="text" name="strada" placeholder="strada">
+            <input type="text" name="nr" placeholder="nr">
+            <input type="text" name="judet" placeholder="judet">
+            <input type="submit" value="Insert">
+        </form>
+      </div>
     </section>
     <?php
       include 'footer.php';

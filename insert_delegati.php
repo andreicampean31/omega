@@ -5,9 +5,16 @@
   $sql_aratadelegati = "SELECT * FROM lista_delegati";
   $result_aratadelegati = mysqli_query($conn, $sql_aratadelegati);
 
-  echo "<h2 class='text-center'>Lista delegatilor</h2>
-        <div class='row'>
-        <div class='container-fluid'>
+  echo "<h2 class='text-center'>Lista delegatilor</h2>";
+        $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        if(strpos($url, 'error=empty') != false){
+          echo '<div class="container">
+                <div class="alert alert-danger alert-dismissable">
+                  <a href="insert_delegati.php" class="close" data-dismiss="alert" aria-label="close">&times</a>
+                  <strong>Atentie!</strong>Ai lasat unul sau mai multe campuri libere!
+                </div></div>';
+        }
+        echo "<div class='container-fluid'>
         <div class='table-responsive'>
         <table class='table'>
           <tr>
@@ -44,16 +51,19 @@
         echo "you left one or more fileds empty";
       }
      ?>
-       <form class='form-inline ' action="includes/insert_delegati.inc.php" method="post">
-          <input type="text" name="id_delegat" placeholder="id delegat">
-          <input type="text" name="nume_delegat" placeholder="nume delegat">
-          <input type="text" name="serie_buletin" placeholder="serie buletin">
-          <input type="text" name="nr_buletin" placeholder="numar buletin">
-          <input type="text" name="eliberat_de" placeholder="eliberat de">
-          <input type="text" name="cnp" placeholder="CNP">
-          <input type="text" name="nr_mij_transp" placeholder="Numar mijloc de transport">
-          <input type="submit" value="Insert">
-        </form>
+      <div class="container">
+        <form class='form-inline' action="includes/insert_delegati.inc.php" method="post">
+           <input type="text" name="id_delegat" placeholder="id delegat">
+           <input type="text" name="nume_delegat" placeholder="nume delegat">
+           <input type="text" name="serie_buletin" placeholder="serie buletin">
+           <input type="text" name="nr_buletin" placeholder="numar buletin">
+           <input type="text" name="eliberat_de" placeholder="eliberat de">
+           <input type="text" name="cnp" placeholder="CNP">
+           <input type="text" name="nr_mij_transp" placeholder="Numar mijloc de transport">
+           <input type="submit" value="Insert">
+         </form>
+      </div>
+
 
       </section>
   <?php

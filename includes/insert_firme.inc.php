@@ -11,8 +11,15 @@
   $nr = $_POST['nr'];
   $jud = $_POST['judet'];
 
-  $sql_firma = "INSERT INTO lista_firme (id_firma, firma, cif, nr_inm_reg_com, localitate, strada, nr, judet)
-                  VALUES ('$id_firma', '$firma', '$cif', '$reg', '$loc', '$str', '$nr', '$jud')";
-  $result_firma = mysqli_query($conn, $sql_firma);
+  //verificare daca nu s-au lasat spatii libere
+  if(empty($id_firma) || empty($firma) || empty($cif) || empty($reg) || empty($loc) || empty($str) || empty($nr) || empty($jud)){
+    header("Location: ../insert_firme.php?error=empty");
+    exit();
+  }
+  else{
+    $sql_firma = "INSERT INTO lista_firme (id_firma, firma, cif, nr_inm_reg_com, localitate, strada, nr, judet)
+                    VALUES ('$id_firma', '$firma', '$cif', '$reg', '$loc', '$str', '$nr', '$jud')";
+    $result_firma = mysqli_query($conn, $sql_firma);
 
-  header("Location: ../insert_firme.php");
+    header("Location: ../insert_firme.php");
+  }

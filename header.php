@@ -14,6 +14,9 @@
      <!-- Bootstrap Core CSS -->
      <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+     <!-- CSS pt butone -->
+     <link href="css/button.css" rel="stylesheet">
+     <link rel="stylesheet" href="css\button2.css">
      <!-- Custom Fonts -->
      <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -22,7 +25,16 @@
      <!-- Theme CSS -->
      <link href="css/freelancer.min.css" rel="stylesheet">
 
+     <!-- Jquery scripts && boostrap scripts-->
+     <script type="text/javascript" src="lib\bootstrap\js\bootstrap.min.js"></script>
+     <script type="text/javascript" src="lib\jquery\jquery.min.js"></script>
      <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
+
+     <!--Scripturi pt butoane -->
+     <script type="text/javascript" src=js/button.js></script>
+     <script type="text/javascript" src=js/button2.js></script>
+
+
      <style>
      .navbar-toggler {
          z-index: 1;
@@ -33,6 +45,7 @@
              width: 100%;
          }
      }
+
      </style>
 
    <body id="page-top" class="index">
@@ -74,8 +87,9 @@
                   <div class="intro-text">
                       <span class="name">Bine ati venit, ';
                       echo $_SESSION['uid']; echo '!</span>
-                      <span class="skills">Nu uitati sa: </span>
-                  </div>
+                      <span class="skills">Nu uitati sa: </span>';
+                      $sql_notify = "SELECT * FROM comanda WHERE "
+                  echo '</div>
               </div>
           </header>';
         }
