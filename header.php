@@ -11,12 +11,16 @@
      <meta name="description" content="">
      <meta name="author" content="Campean Andrei">
      <title>Omega Group</title>
+     <!-- Jquery scripts && boostrap scripts-->
+
+     <script type="text/javascript" src="lib\jquery\jquery.min.js"></script>
+     <script type="text/javascript" src="lib\bootstrap\js\bootstrap.min.js"></script>
      <!-- Bootstrap Core CSS -->
      <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
      <!-- CSS pt butone -->
      <link href="css/button.css" rel="stylesheet">
-     <link rel="stylesheet" href="css\button2.css">
+
      <!-- Custom Fonts -->
      <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -25,14 +29,8 @@
      <!-- Theme CSS -->
      <link href="css/freelancer.min.css" rel="stylesheet">
 
-     <!-- Jquery scripts && boostrap scripts-->
-     <script type="text/javascript" src="lib\bootstrap\js\bootstrap.min.js"></script>
-     <script type="text/javascript" src="lib\jquery\jquery.min.js"></script>
-     <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
 
-     <!--Scripturi pt butoane -->
-     <script type="text/javascript" src=js/button.js></script>
-     <script type="text/javascript" src=js/button2.js></script>
+     <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
 
 
      <style>
@@ -64,6 +62,12 @@
                               <a class="nav-link page-scroll" href="home.php">Home</a>
                           </li>
                           <li class="nav-item">
+                              <a class="nav-link page-scroll" href="ofertare.php">Oferte</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link page-scroll" href="comanda.php">Comenzi</a>
+                          </li>
+                          <li class="nav-item">
                               <a class="nav-link page-scroll" href="includes/logout.inc.php">Logout</a>
                           </li>';
                         }
@@ -87,8 +91,13 @@
                   <div class="intro-text">
                       <span class="name">Bine ati venit, ';
                       echo $_SESSION['uid']; echo '!</span>
-                      <span class="skills">Nu uitati sa: </span>';
-                      $sql_notify = "SELECT * FROM comanda WHERE "
+                      <span class="skills">Atentie: </span></br>';
+                      $sql_notify = "SELECT denumire_produs, DATEDIFF(termen_livrare, CURRENT_DATE) FROM comanda WHERE DATEDIFF(termen_livrare, CURRENT_DATE) < 0";
+                      $result_notify = mysqli_query($conn, $sql_notify);
+                      while($row_notify = mysqli_fetch_assoc($result_notify)){
+                        echo 'Ati depasit termenul de livrare la '. $row_notify['denumire_produs']. ' cu '. $row_notify['DATEDIFF(termen_livrare, CURRENT_DATE)'] * (-1). ' zile </br>';
+                      }
+
                   echo '</div>
               </div>
           </header>';

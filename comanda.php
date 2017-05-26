@@ -5,12 +5,12 @@
   $sql_comanda_afisare = "SELECT * FROM comanda";
   $result_comanda_afisare = mysqli_query($conn, $sql_comanda_afisare);
 
-  echo "<h2 class='text-center'>Oferte</h2>";
+  echo "<h2 class='text-center'>Comenzi in asteptare</h2>";
   echo "<div class='container-fluid'>
   <div class='table-responsive'>
   <table class='table'>
     <tr>
-      <th>Factura</th>
+      <th>Aviz</th>
       <th>id</th>
       <th>Denumire produs</th>
       <th>Pret RON</th>
@@ -35,16 +35,8 @@
     while($row_comanda_afisare = mysqli_fetch_array($result_comanda_afisare)){
       echo "<tr>
       <td>
-        <button id='myBtn'>Factura</button>
-        <div id='myModal' class='modal'>
-         <div class='modal-content'>
-           <span class='close'>&times;</span>
-           <form class='' action='includes/reducere.inc.php?id=".$row_comanda_afisare['id']. " ' method='post'>
-             <input type='text' name='reducere_update' placeholder='Reducere'>
-             <input type='submit' value='Modifica'>
-           </form>
-         </div>
-         <script type='text/javascript' src='js/button.js'></script>
+      <form action='includes/aviz.inc.php' method='post'>
+        <input type='checkbox' name='aviz_id[]' value='". $row_comanda_afisare['id']. "' />
       </td>
       <td>". $row_comanda_afisare['id']. "</td>";
       echo "<td>". $row_comanda_afisare['denumire_produs']. "</td>";
@@ -75,7 +67,7 @@
       echo "<br>";
     }
 
-    echo "</table></div></div></div></div>";
+    echo "<input type='submit' value='aviz'></form></table></div></div></div></div>";
     ?>
     </section>
   <?php include 'footer.php'; ?>

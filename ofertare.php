@@ -55,7 +55,7 @@
            </form>
          </div>
          <script type='text/javascript' src='js/button.js'></script>
-        </td>
+      </td>
       <td>". $row_oferte['id']. "</td>";
       echo "<td>". $row_oferte['denumire_produs']. "</td>";
       echo "<td>". $row_oferte['pretRON']. "</td>";
