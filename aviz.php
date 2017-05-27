@@ -20,6 +20,14 @@
     $nr = $row_date_firma['nr'];
     $jud = $row_date_firma['judet'];
   }
+
+  //Tva
+  $sql_tva = "SELECT cota_tva FROM setari LIMIT 1";
+  $result_tva = mysqli_query($conn, $sql_tva);
+  while ($row_tva = mysqli_fetch_assoc($result_tva)) {
+    $tva = $row_tva['cota_tva'];
+  }
+
  ?>
 
 <!DOCTYPE html>
@@ -102,26 +110,20 @@
         <tfoot>
           <tr>
             <td colspan="2"></td>
-            <td colspan="2">SUBTOTAL</td>
-            <td>$5,200.00</td>
+
           </tr>
           <tr>
-            <td colspan="2"></td>
-            <td colspan="2">TAX 25%</td>
-            <td>$1,300.00</td>
+            <td colspan="4"></td>
+            <td colspan="2">TVA <?php echo $tva; ?>%</td>
+            <td></td>
           </tr>
           <tr>
-            <td colspan="2"></td>
-            <td colspan="2">GRAND TOTAL</td>
-            <td>$6,500.00</td>
+            <td colspan="4"></td>
+            <td colspan="2">TOTAL</td>
+            <td></td>
           </tr>
         </tfoot>
       </table>
-      <div id="thanks">Thank you!</div>
-      <div id="notices">
-        <div>NOTICE:</div>
-        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-      </div>
     </main>
     <footer>
       Invoice was created on a computer and is valid without the signature and seal.
