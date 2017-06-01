@@ -28,7 +28,7 @@
       <th>Mentiuni1</th>
       <th>Mentiuni2</th>
       <th>Cota TVA</th>
-      <th>Vsaloare</th>
+      <th>Valoare</th>
       <th>TVA</th>
       <th>Facturat RON</th>
       <th>Termen plata</th>
@@ -39,22 +39,9 @@
     while($row_oferte = mysqli_fetch_array($result_oferte)){
       echo "<tr>
       <td>
+      <form action ='?comanda_reducere!id=". $row_oferte['id'] ."' method='POST'>
         <button id='myBtn'>Comanda/Reducere</button>
-        <div id='myModal' class='modal'>
-         <div class='modal-content'>
-           <span class='close'>&times;</span>
-           <form class='' action='includes\comanda.inc.php?id=".$row_oferte['id']. " ' method='post'>
-             <input type='text' name='nr_comanda' placeholder='Numar comanda'>
-             <input type='text' name='termen_livrare' placeholder='Termend de livrare'>
-             <input type='submit' value='Coamnda'>
-           </form>
-           </br>
-           <form class='' action='includes/reducere.inc.php?id=".$row_oferte['id']. " ' method='post'>
-             <input type='text' name='reducere_update' placeholder='Reducere'>
-             <input type='submit' value='Modifica'>
-           </form>
-         </div>
-         <script type='text/javascript' src='js/button.js'></script>
+      </form>
       </td>
       <td>". $row_oferte['id']. "</td>";
       echo "<td>". $row_oferte['denumire_produs']. "</td>";
@@ -116,6 +103,24 @@ echo "</table></div></div></div></div>";
     <input type="submit" value="Insert">
   </form>
 </div>
+  <?php
+  //url
+  $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
+  //verificare url
+
+  if(strpos($url, 'comanda_reducere!id=')){
+    echo "<form class='' action='includes\comanda.inc.php?id=".$_GET['comanda_reducere!id']. " ' method='post'>
+            <input type='text' name='nr_comanda' placeholder='Numar comanda'>
+            <input type='text' name='termen_livrare' placeholder='Termend de livrare'>
+            <input type='submit' value='Coamnda'>
+          </form>
+          <form class='' action='includes/reducere.inc.php?id=".$_GET['comanda_reducere!id']. " ' method='post'>
+            <input type='text' name='reducere_update' placeholder='Reducere'>
+            <input type='submit' value='Modifica'>
+          </form>";
+  }
+   ?>
   </section>
 <?php include 'footer.php'; ?>
 </body>
