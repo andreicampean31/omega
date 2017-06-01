@@ -25,14 +25,14 @@
     $c_reducere = $row_comanda['reducere'];
   }
   //test
-  echo $c_denumire_produs;echo $c_pretRON;echo $c_U_M;echo $c_cantitate;echo $c_firma;echo $c_delegat;echo $c_mentiuni1;
+  /*echo $c_denumire_produs;echo $c_pretRON;echo $c_U_M;echo $c_cantitate;echo $c_firma;echo $c_delegat;echo $c_mentiuni1;
   echo $c_mentiuni2;echo $c_cota_tva;echo $c_valoare;echo $c_tva;echo $c_facturatRON;echo $c_termen_plata;echo $c_persoana_contact;
-  echo $c_pret_ofertat;echo $c_reducere;
+  echo $c_pret_ofertat;echo $c_reducere;*/
 
   $nr_comanda = $_POST['nr_comanda'];
   $termen_livrare = $_POST['termen_livrare'];
   //test
-  echo $nr_comanda;echo $termen_livrare;
+  //echo $nr_comanda;echo $termen_livrare;
 
   //inserare noile date in tabelul comanda
   $sql_comanda_insert = "INSERT INTO comanda (denumire_produs, pretRON, U_M, cantitate, firma, delegat, mentiuni1, mentiuni2, cota_tva, valoare, tva, facturatRON, termen_plata, persoana_contact, pret_ofertat, reducere, nr_comanda, termen_livrare)

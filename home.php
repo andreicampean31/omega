@@ -7,7 +7,7 @@
     if(isset( $_SESSION['uid'])){
       echo '
           <div class="col-sm-4 portfolio-item">
-              <a href="facturare.php" class="portfolio-link">
+              <a href="facturare.php?sortare=toate" class="portfolio-link">
                           <i class="fa fa-3x">Facturare</i>
               </a>
           </div>';

@@ -46,13 +46,15 @@ if ( isset ( $_POST['aviz_id'] ) )
                         VALUES ('$denumire_produs_a', '$pretRON_a', '$U_M_a', '$cantitate_a', '$firma_a', '$delegat_a', '$mentiuni1_a', '$mentiuni2_a', '$cota_tva_a', '$valoare_a', '$tva_a', '$facturatRON_a', '$termen_plata_a', '$persoana_contact_a', '$pret_ofertat_a', '$reducere_a', '$nr_comanda_a', '$termen_livrare_a')";
             $result_aviz = mysqli_query($conn, $sql_aviz);
 
-            //$sql_delete = "DELETE FROM comanda WHERE id='$aviz_id'";
-            //$result_delete = mysqli_query($conn, $sql_delete);
+            //delete din comanda
+            $sql_delete = "DELETE FROM comanda WHERE id='$aviz_id'";
+            $result_delete = mysqli_query($conn, $sql_delete);
 
+            //adaugare nr de aviz
             $sql_aviz_update = "UPDATE factura SET nr_aviz = '$nr_aviz', data_aviz=CURRENT_DATE ORDER BY cod_produs DESC LIMIT 1";
             $result_aviz_update = mysqli_query($conn, $sql_aviz_update);
          }
    }
 
-header("Location: ../aviz.php?nr_aviz=$nr_aviz");
+//header("Location: ../aviz.php?nr_aviz=$nr_aviz");
  ?>
