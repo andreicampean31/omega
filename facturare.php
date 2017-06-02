@@ -1,7 +1,7 @@
 <?php
   include 'header.php';
 
-  echo "<h2 class='text-center'>Comenzi in asteptare</h2></br>";
+  echo "<h2 class='text-center'>FACTURIER</h2></br>";
   echo '<form class="" action="?sortare=" method="get">
     <p>Cum vrei sa sortezi tabelul?</p>
     <input type="submit" name="sortare" value="facturate">
@@ -86,7 +86,7 @@
       //scadenta
       $sql_date_factura = "UPDATE factura SET scadenta = DATE_ADD(data_factura, INTERVAL termen_plata DAY) WHERE cod_produs=$row_factura[cod_produs]";
       $result_date_factura = mysqli_query($conn, $sql_date_factura);
-        echo "<td>". $row_factura['scadenta']. "</td></tr></br>";
+        echo "<td>". $row_factura['scadenta']. "</td></tr>";
     }
 
     echo "<input type='submit' value='factura'></form></table></div></div></div></div>";
