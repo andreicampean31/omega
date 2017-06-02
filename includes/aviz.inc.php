@@ -56,5 +56,5 @@ if ( isset ( $_POST['aviz_id'] ) )
          }
    }
 
-//header("Location: ../aviz.php?nr_aviz=$nr_aviz");
+header("Location: ../aviz.php?nr_aviz=$nr_aviz");
  ?>

@@ -57,8 +57,8 @@
     while($row_factura = mysqli_fetch_array($result_factura)){
       echo "<tr>
       <td>
-      <form action='includes/aviz.inc.php' method='post'>
-        <input type='checkbox' name='aviz_id[]' value='". $row_factura['cod_produs']. "' />
+      <form action='includes/factura.inc.php' method='post'>
+        <input type='checkbox' name='factura_id[]' value='". $row_factura['cod_produs']. "' />
       </td>
       <td>". $row_factura['cod_produs']. "</td>";
       echo "<td>". $row_factura['denumire_produs']. "</td>";
@@ -89,7 +89,7 @@
         echo "<td>". $row_factura['scadenta']. "</td></tr></br>";
     }
 
-    echo "<input type='submit' value='aviz'></form></table></div></div></div></div>";
+    echo "<input type='submit' value='factura'></form></table></div></div></div></div>";
     ?>
     </section>
   <?php include 'footer.php'; ?>
