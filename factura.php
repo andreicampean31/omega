@@ -3,11 +3,12 @@
   include 'dbh.php';
   $nr_factura_print = $_GET['nr_factura'];
 
-  $sql_factura_print = "SELECT firma FROM factura WHERE nr_factura = '$nr_factura_print'";
+  $sql_factura_print = "SELECT firma, delegat FROM factura WHERE nr_factura = '$nr_factura_print'";
   $result_factura_print = mysqli_query($conn, $sql_factura_print);
 
   while($row_factura_print = mysqli_fetch_array($result_factura_print)){
     $firma_print = $row_factura_print['firma'];
+    $delegat_print = $row_factura_print['delegat'];
   }
   $sql_date_firma = "SELECT * FROM lista_firme WHERE firma = '$firma_print'";
   $result_date_firma = mysqli_query($conn, $sql_date_firma);
@@ -20,7 +21,17 @@
     $nr = $row_date_firma['nr'];
     $jud = $row_date_firma['judet'];
   }
+  //date delegat
+  $sql_date_delegat = "SELECT * FROM lista_delegati WHERE nume_delegat = '$delegat_print'";
+  $result_date_delegat = mysqli_query($conn, $sql_date_delegat);
 
+  while($row_date_delegat = mysqli_fetch_array($result_date_delegat)){
+    $serie_bul = $row_date_delegat['serie_buletin'];
+    $nr_bul = $row_date_delegat['nr_buletin'];
+    $elib_de = $row_date_delegat['eliberat_de'];
+    $cnp = $row_date_delegat['cnp'];
+    $nr_mij_transp = $row_date_delegat['nr_mijloc_transport'];
+  }
   //Tva
   $sql_tva = "SELECT cota_tva FROM setari LIMIT 1";
   $result_tva = mysqli_query($conn, $sql_tva);
@@ -36,6 +47,7 @@
     <meta charset="utf-8">
     <title>Example 2</title>
     <link rel="stylesheet" href="css/aviz.css" media="all" />
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-grid.min.css">
   </head>
   <body>
     <header class="clearfix">
@@ -128,7 +140,19 @@
       </table>
     </main>
     <footer>
-      Invoice was created on a computer and is valid without the signature and seal.
+      <div class="row">
+        <div id="semnatura" class="col-md-6">
+          <h3>SEMNATURA SI STAMPILA</h3>
+        </div>
+        <div class="col-md-6 date_expeditie">
+          <h3>DATE PRIVIND EXPEDITIA</h3>
+          Numele delegatului: <?php echo $delegat_print; ?></br>
+          Buletin/carte de identitate:</br> seria: <?php echo $serie_bul; ?> Nr: <?php echo $nr_bul; ?> Eliberat de: <?php echo $elib_de; ?></br>
+          Mijloc de transport: <?php echo $nr_mij_transp; ?></br>
+          Expedierea s-a facut in prezenta noastra la data de: <?php echo date("d/m/Y");?> ora:
+        </div>
+      </div>
+      Factura a fost creata pe un calc...
     </footer>
   </body>
 </html>

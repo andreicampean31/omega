@@ -29,11 +29,9 @@
               <th>judet</th>
             </tr>";
             while($row_aratafirma = mysqli_fetch_array($result_aratafirma)){
-              echo '<tr>
+              echo "<tr>
               <td>
-              <form href="includes/delete.inc.php?firmaid='.$row_aratafirma['id']. '" method="get">
-                      <input type="submit" value="Delete">
-                    </form></td>';
+              <a href='includes\delete.inc.php?firmaid=". $row_aratafirma['id']."'>Delete</a></td>";
               echo "
               <td>". $row_aratafirma['id']. "</td>";
               echo "<td>". $row_aratafirma['id_firma']. "</td>";

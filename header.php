@@ -90,8 +90,7 @@
           <header>
               <div class="container">
                   <div class="intro-text">
-                      <span class="name">Bine ati venit, ';
-                      echo $_SESSION['uid']; echo '!</span>
+                      <span class="name">Program de facturare</span>
                       <span class="skills">Atentie: </span></br>';
                       $sql_notify = "SELECT denumire_produs, DATEDIFF(termen_livrare, CURRENT_DATE) FROM comanda WHERE DATEDIFF(termen_livrare, CURRENT_DATE) < 0";
                       $result_notify = mysqli_query($conn, $sql_notify);
