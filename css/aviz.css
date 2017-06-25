@@ -196,10 +196,31 @@ table tfoot tr td:first-child {
 footer {
   color: #777777;
   width: 100%;
-  height: 30px;
+  height: 117.5px;
   position: absolute;
   bottom: 0;
   border-top: 1px solid #AAAAAA;
   padding: 8px 0;
   text-align: center;
 }
+#semnatura {
+  float: center;
+  text-align: center;
+}
+
+#semnatura h1 {
+  color: #0087C3;
+  font-size: 2em;
+  line-height: 1em;
+  font-weight: normal;
+  margin: 0  0 0 0;
+}
+.date_expeditie {
+  margin-bottom: 30px;
+  float: center;
+  text-align: left;
+}
+.date_expeditie h3{
+  float: center;
+  text-align: center;
+}s
