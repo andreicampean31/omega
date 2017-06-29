@@ -15,14 +15,15 @@
   }
   echo "<div class='container-fluid'>
   <div class='table-responsive'>
-  <table class='table'>
+  <table class='fancyTable' id='myTable05'>
+    <thead>
     <tr>
-      <th>Comanda/Reducere</th>
+      <th>Actiune</th>
       <th>id</th>
       <th>Denumire produs</th>
       <th>Pret RON</th>
       <th>U/M</th>
-      <th>Cantitate</th>
+      <th>Cant</th>
       <th>Firma</th>
       <th>Delegat</th>
       <th>Mentiuni1</th>
@@ -34,13 +35,13 @@
       <th>Termen plata</th>
       <th>Persoana contact</th>
       <th>Pret ofertat</th>
-      <th>Reducere acordata</th>
-    </tr>";
+      <th>Reducere</th>
+    </tr></thead>";
     while($row_oferte = mysqli_fetch_array($result_oferte)){
-      echo "<tr>
+      echo "<tbody><tr class='grid'>
       <td>
       <form action ='?comanda_reducere!id=". $row_oferte['id'] ."' method='POST'>
-        <button id='myBtn'>Comanda/Reducere</button>
+        <button id='myBtn'>Actiune</button>
       </form>
       </td>
       <td>". $row_oferte['id']. "</td>";
@@ -59,11 +60,20 @@
       echo "<td>". $row_oferte['termen_plata']. "</td>";
       echo "<td>". $row_oferte['persoana_contact']. "</td>";
       echo "<td>". $row_oferte['pret_ofertat']. "</td>";
-      echo "<td>". $row_oferte['reducere']. "</td></tr>";
-      echo "<br>";
+      echo "<td>". $row_oferte['reducere']. "</td></tr></tbody>";
     }
 echo "</table></div></div></div></div>";
  ?>
+
+ <script src="lib/jquery/jquery.min.js"></script>
+ <script src="js/jquery.fixedheadertable.js"></script>
+ <script>
+ $('#myTable05').fixedHeaderTable({
+	altClass: 'odd',
+	footer: true,
+	fixedColumns: 1,
+});
+	</script>
 
  <div class="container">
   <form class="" action="includes/ofertare.inc.php" method="post">

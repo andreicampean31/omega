@@ -19,7 +19,7 @@
           </div>';
       echo '
           <div class="col-sm-4 portfolio-item">
-              <a href="comanda.php" class="portfolio-link">
+              <a href="comanda.php?sortare=" class="portfolio-link">
                           <i class="fa fa-3x">Comenzi</i>
               </a>
           </div>';

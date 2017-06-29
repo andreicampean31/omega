@@ -1,14 +1,23 @@
 <?php
   include 'header.php';
 
-  //intertogare
-  $sql_comanda_afisare = "SELECT * FROM comanda";
-  $result_comanda_afisare = mysqli_query($conn, $sql_comanda_afisare);
-
   echo "<h2 class='text-center'>Comenzi in asteptare</h2>";
+  echo '<form action="?sortare=" method="get">
+        <input type="submit" name="sortare" value="Fara comanda">
+        </form>';
+  $sortare = $_GET['sortare'];
+  if($sortare == 'Fara+comanda'){
+    $sql_comanda_afisare = "SELECT * FROM comanda WHERE nr_comanda = 0";
+    $result_comanda_afisare = mysqli_query($conn, $sql_comanda_afisare);
+  }
+  else{
+    $sql_comanda_afisare = "SELECT * FROM comanda";
+    $result_comanda_afisare = mysqli_query($conn, $sql_comanda_afisare);
+  }
   echo "<div class='container-fluid'>
   <div class='table-responsive'>
-  <table class='table'>
+  <table class='fancyTable' id='myTable05'>
+    <thead>
     <tr>
       <th>Aviz</th>
       <th>id</th>
@@ -31,9 +40,9 @@
       <th>Nr comanda</th>
       <th>Termen de livrare</th>
       <th>Nr zile scadente ramase</th>
-    </tr>";
+    </tr></thead>";
     while($row_comanda_afisare = mysqli_fetch_array($result_comanda_afisare)){
-      echo "<tr>
+      echo "<tbody><tr class='grid'>
       <td>
       <form action='includes/aviz.inc.php' method='post'>
         <input type='checkbox' name='aviz_id[]' value='". $row_comanda_afisare['id']. "' />
@@ -63,12 +72,22 @@
       while($row_date = mysqli_fetch_array($result_date)){
         $zile_scadente = $row_date['DATEDIFF(termen_livrare, CURRENT_DATE)'];
       }
-      echo '<td>'.$zile_scadente. '</td></tr>';
-      echo "<br>";
+      echo '<td>'.$zile_scadente. '</td></tr></tbody>';
     }
-
-    echo "<input type='submit' value='aviz'></form></table></div></div></div></div>";
+    if($sortare == ''){
+      echo "<input type='submit' value='aviz'>";
+    }
+    echo "</form></table></div></div></div></div>";
     ?>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="js/jquery.fixedheadertable.js"></script>
+    <script>
+    $('#myTable05').fixedHeaderTable({
+	altClass: 'odd',
+	footer: true,
+	fixedColumns: 1,
+});
+   	</script>
     </section>
   <?php include 'footer.php'; ?>
   </body>

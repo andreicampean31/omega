@@ -11,15 +11,18 @@
      <meta name="description" content="">
      <meta name="author" content="Campean Andrei">
      <title>Omega Group</title>
-     <!-- Jquery scripts && boostrap scripts-->
 
-     <script type="text/javascript" src="lib\jquery\jquery.min.js"></script>
-     <script type="text/javascript" src="lib\bootstrap\js\bootstrap.min.js"></script>
+
      <!-- Bootstrap Core CSS -->
      <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
      <!-- CSS pt butone -->
      <link href="css/button.css" rel="stylesheet">
+
+     <!-- Jquery scripts && boostrap scripts-->
+     <script type="text/javascript" src="lib\jquery\jquery.min.js"></script>
+     <script type="text/javascript" src="lib\bootstrap\js\bootstrap.min.js"></script>
+
 
      <!-- Custom Fonts -->
      <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -28,6 +31,9 @@
 
      <!-- Theme CSS -->
      <link href="css/freelancer.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="css/fixedheader.css">
+     <link rel="stylesheet" href="css/fixedheader_theme.css">
+
 
 
      <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
@@ -66,7 +72,7 @@
                               <a class="nav-link page-scroll" href="ofertare.php">Oferte</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link page-scroll" href="comanda.php">Comenzi</a>
+                              <a class="nav-link page-scroll" href="comanda.php?sortare=">Comenzi</a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link page-scroll" href="includes/logout.inc.php">Logout</a>
