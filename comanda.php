@@ -15,7 +15,7 @@
     $result_comanda_afisare = mysqli_query($conn, $sql_comanda_afisare);
   }
   echo "<div class='container-fluid'>
-  <div class='table-responsive'>
+  <div class='table-responsive'><form action='includes/aviz.inc.php' method='post'>
   <table class='fancyTable' id='myTable05'>
     <thead>
     <tr>
@@ -44,7 +44,6 @@
     while($row_comanda_afisare = mysqli_fetch_array($result_comanda_afisare)){
       echo "<tbody><tr class='grid'>
       <td>
-      <form action='includes/aviz.inc.php' method='post'>
         <input type='checkbox' name='aviz_id[]' value='". $row_comanda_afisare['id']. "' />
       </td>
       <td>". $row_comanda_afisare['id']. "</td>";
@@ -72,21 +71,18 @@
       while($row_date = mysqli_fetch_array($result_date)){
         $zile_scadente = $row_date['DATEDIFF(termen_livrare, CURRENT_DATE)'];
       }
-      echo '<td>'.$zile_scadente. '</td></tr></tbody>';
+      echo '<td>'.$zile_scadente. '</td></tr>';
     }
-    if($sortare == ''){
-      echo "<input type='submit' value='aviz'>";
-    }
-    echo "</form></table></div></div></div></div>";
+    echo "<input type='submit' value='aviz'></form></tbody></table></div></div></div>";
     ?>
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="js/jquery.fixedheadertable.js"></script>
     <script>
     $('#myTable05').fixedHeaderTable({
-	altClass: 'odd',
-	footer: true,
-	fixedColumns: 1,
-});
+    	altClass: 'odd',
+    	footer: true,
+    	fixedColumns: 1,
+    });
    	</script>
     </section>
   <?php include 'footer.php'; ?>

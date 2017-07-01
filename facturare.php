@@ -25,7 +25,7 @@
     $result_factura = mysqli_query($conn, $sql_factura);
   }
   echo "<div class='container-fluid'>
-  <div class='table-responsive'>
+  <div class='table-responsive'><form action='includes/factura.inc.php' method='post'>
   <table class='fancyTable' id='myTable05'>
     <thead>
     <tr>
@@ -58,7 +58,6 @@
     while($row_factura = mysqli_fetch_array($result_factura)){
       echo "<tbody><tr class='grid'>
       <td>
-      <form action='includes/factura.inc.php' method='post'>
         <input type='checkbox' name='factura_id[]' value='". $row_factura['cod_produs']. "' />
       </td>
       <td>". $row_factura['cod_produs']. "</td>";
@@ -87,10 +86,12 @@
       //scadenta
       $sql_date_factura = "UPDATE factura SET scadenta = DATE_ADD(data_factura, INTERVAL termen_plata DAY) WHERE cod_produs=$row_factura[cod_produs]";
       $result_date_factura = mysqli_query($conn, $sql_date_factura);
-        echo "<td>". $row_factura['scadenta']. "</td></tr></tbody>";
+        echo "<td>". $row_factura['scadenta']. "</td></tr>";
     }
-
-    echo "<input type='submit' value='factura'></form></table></div></div></div></div>";
+    if(!($sortare == 'facturate' || $sortare == 'toate')){
+      echo "<input type='submit' value='factura'>";
+    }
+    echo "</form></tbody></table></div></div></div></div>";
     ?>
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="js/jquery.fixedheadertable.js"></script>
