@@ -1,13 +1,29 @@
 <?php
   include 'header.php';
-
   echo "<h2 class='text-center'>Comenzi in asteptare</h2>";
   echo '<form action="?sortare=" method="get">
         <input type="submit" name="sortare" value="Fara comanda">
+        <input type="submit" name="sortare" value="Cu comanda">
+        <input type="submit" name="sortare" value="Toate">
         </form>';
+
+  //eroare firme diferite
+  $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+  if(strpos($url, 'error=firma_diferita') != false){
+    echo '<div class="container">
+          <div class="alert alert-danger alert-dismissable">
+            <a href="comanda.php" class="close" data-dismiss="alert" aria-label="close">&times</a>
+            <strong>Atentie!</strong>Ai selectat doua sau mai multe produse de la firme diferite
+          </div></div>';
+  }
+
   $sortare = $_GET['sortare'];
-  if($sortare == 'Fara+comanda'){
+  if($sortare == 'Fara comanda'){
     $sql_comanda_afisare = "SELECT * FROM comanda WHERE nr_comanda = 0";
+    $result_comanda_afisare = mysqli_query($conn, $sql_comanda_afisare);
+  }
+  else if($sortare == 'Cu comanda'){
+    $sql_comanda_afisare = "SELECT * FROM comanda WHERE nr_comanda > 0";
     $result_comanda_afisare = mysqli_query($conn, $sql_comanda_afisare);
   }
   else{
@@ -45,6 +61,7 @@
       echo "<tbody><tr class='grid'>
       <td>
         <input type='checkbox' name='aviz_id[]' value='". $row_comanda_afisare['id']. "' />
+
       </td>
       <td>". $row_comanda_afisare['id']. "</td>";
       echo "<td>". $row_comanda_afisare['denumire_produs']. "</td>";

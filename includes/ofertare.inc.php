@@ -21,7 +21,7 @@
   //verificare daca nu s-au lasat spatii libere unde nu trebuie
 
     //variabile calcualte
-      $pret_ron = ROUND($pret_ofertat*(1+$reducere), 2); // pretul final
+      $pret_ron = $pret_ofertat*(1+$reducere); // pretul final
       $valoare = ROUND(($pret_ron*$cantitate), 2); //valoarea comenzii
       $TVA = ROUND(($valoare*($cota_tva/100)), 2);
       $facturat_ron = ($valoare+$TVA); //facturat +TVA;

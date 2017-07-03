@@ -9,6 +9,16 @@
     <input type="submit" name="sortare" value="toate">
   </form>';
 
+  //eroare firme diferite
+  $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+  if(strpos($url, 'error=firma_diferita') != false){
+    echo '<div class="container">
+          <div class="alert alert-danger alert-dismissable">
+            <a href="facturare.php?sortare=toate" class="close" data-dismiss="alert" aria-label="close">&times</a>
+            <strong>Atentie!</strong>Ai selectat doua sau mai multe produse de la firme diferite
+          </div></div>';
+  }
+
   $sortare = $_GET['sortare']; //tipul sortarii
 
   //ce fel de sortare
