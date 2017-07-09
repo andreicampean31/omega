@@ -6,7 +6,6 @@
         <input type="submit" name="sortare" value="Cu comanda">
         <input type="submit" name="sortare" value="Toate">
         </form>';
-
   //eroare firme diferite
   $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
   if(strpos($url, 'error=firma_diferita') != false){
